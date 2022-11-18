@@ -30,6 +30,7 @@ public class MonUser3Controller {
 
 	@GetMapping("/users")
 	public List<MonUser3> getUsers() {
+
 		return (List<MonUser3>) monUser3Repository.findAll();
 	}
 
@@ -74,6 +75,7 @@ public class MonUser3Controller {
 			trans.begin();
 			entityManager.persist(monUser3);
 			trans.commit();
+			monUser3Repository.save(monUser3);
 		} catch (Exception e) {
 			System.out.println(e);
 		} finally {
